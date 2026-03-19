@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sting-Ray – Professioneel Zwembad Onderhoud</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cyaan:#00d4ff;
+  --cyaan-dim:rgba(0,212,255,0.13);
+  --cyaan-glow:rgba(0,212,255,0.38);
+  --donker:#060d14;
+  --donker-2:#0a1520;
+  --donker-3:#0e1e2e;
+  --donker-4:#132435;
+  --tekst:#c8dce8;
+  --tekst-dim:#6a8fa8;
+  --wit:#ffffff;
+  --font-display:'Barlow Condensed',sans-serif;
+  --font-body:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--donker);color:var(--tekst);line-height:1.65;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--donker-2)}
+::-webkit-scrollbar-thumb{background:var(--cyaan-glow);border-radius:3px}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 3rem;
+  background:rgba(6,13,20,0.88);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(0,212,255,0.1);
+}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:44px;width:auto;display:block}
+/* nav right side: contact blok + offerte knop */
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-contact-blok{display:flex;align-items:center;gap:0.5rem;background:var(--cyaan);color:var(--donker);padding:0.5rem 1.1rem;border-radius:4px;font-family:var(--font-display);font-weight:700;font-size:0.85rem;letter-spacing:0.07em;text-transform:uppercase;text-decoration:none;transition:box-shadow 0.2s}
+.nav-contact-blok:hover{box-shadow:0 0 18px var(--cyaan-glow)}
+nav ul{list-style:none;display:flex;gap:2.5rem;align-items:center}
+nav ul a{text-decoration:none;color:var(--tekst-dim);font-size:0.85rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s}
+nav ul a:hover{color:var(--cyaan)}
+.nav-cta{background:transparent;border:1.5px solid var(--cyaan);color:var(--cyaan) !important;padding:0.5rem 1.3rem;border-radius:4px;transition:background 0.2s !important}
+.nav-cta:hover{background:var(--cyaan-dim) !important}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:8rem 3rem 4rem;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(6,13,20,0.96) 38%,rgba(6,13,20,0.55) 100%),
+    url('https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1600&auto=format&fit=crop') center/cover no-repeat;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,212,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.035) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-radial{position:absolute;bottom:-20%;left:35%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;max-width:780px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.7rem;font-size:0.77rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--cyaan);margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--cyaan)}
+.hero h1{font-family:var(--font-display);font-weight:900;font-size:clamp(3.5rem,9vw,7rem);line-height:0.93;color:var(--wit);text-transform:uppercase;margin-bottom:1.5rem}
+.hero h1 .acc{color:var(--cyaan);display:block}
+.hero-sub{font-size:1.05rem;color:var(--tekst);max-width:480px;margin-bottom:2.5rem;font-weight:300}
+.hero-sub strong{color:var(--wit);font-weight:500}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem}
+/* Hero CTA blok — zelfde stijl als nav */
+.hero-cta-blok{display:inline-flex;align-items:center;gap:0.6rem;background:var(--cyaan);color:var(--donker);font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.85rem 2rem;border-radius:4px;text-decoration:none;transition:box-shadow 0.25s,transform 0.2s}
+.hero-cta-blok:hover{transform:translateY(-2px);box-shadow:0 0 30px var(--cyaan-glow)}
+.btn-o{display:inline-block;border:1.5px solid rgba(200,220,232,0.28);color:var(--tekst);font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.85rem 2rem;border-radius:4px;text-decoration:none;transition:border-color 0.2s,color 0.2s}
+.btn-o:hover{border-color:var(--cyaan);color:var(--cyaan)}
+.hero-stats{display:flex;gap:3rem;flex-wrap:wrap}
+.stat-nr{font-family:var(--font-display);font-size:2.8rem;font-weight:900;color:var(--cyaan);line-height:1}
+.stat-label{font-size:0.78rem;color:var(--tekst-dim);text-transform:uppercase;letter-spacing:0.09em;margin-top:0.2rem}
+
+/* SECTIONS */
+section{padding:6rem 3rem}
+.container{max-width:1160px;margin:0 auto}
+.eyebrow{font-size:0.74rem;font-weight:500;letter-spacing:0.17em;text-transform:uppercase;color:var(--cyaan);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem}
+.eyebrow::before{content:'';display:block;width:22px;height:1.5px;background:var(--cyaan)}
+h2.stitle{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1;color:var(--wit);margin-bottom:1.2rem}
+h2.stitle .acc{color:var(--cyaan)}
+.ssub{color:var(--tekst-dim);max-width:540px;font-weight:300;font-size:1rem}
+
+/* DIENSTEN */
+#diensten{background:var(--donker-2)}
+.diensten-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5px;margin-top:3.5rem;border:1.5px solid rgba(0,212,255,0.1);border-radius:8px;overflow:hidden}
+.dienst{background:var(--donker-3);padding:2.2rem 1.8rem;transition:background 0.25s;position:relative}
+.dienst:hover{background:var(--donker-4)}
+.dienst::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--cyaan);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+.dienst:hover::after{transform:scaleX(1)}
+.dienst-icon{width:48px;height:48px;border-radius:6px;background:var(--cyaan-dim);border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem}
+.dienst-icon svg{width:22px;height:22px;stroke:var(--cyaan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dienst h3{font-family:var(--font-display);font-size:1.25rem;font-weight:700;text-transform:uppercase;color:var(--wit);margin-bottom:0.6rem;letter-spacing:0.02em}
+.dienst p{font-size:0.9rem;color:var(--tekst-dim);line-height:1.65;margin-bottom:1.2rem}
+.dienst-link{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyaan);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem}
+.dienst-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;transition:transform 0.2s}
+.dienst-link:hover svg{transform:translateX(4px)}
+
+/* WERKWIJZE */
+#werkwijze{background:var(--donker)}
+.ww-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:4rem}
+@media(max-width:820px){.ww-layout{grid-template-columns:1fr}}
+.stappen{display:flex;flex-direction:column}
+.stap{display:flex;gap:1.5rem;padding:1.8rem 0;border-bottom:1px solid rgba(0,212,255,0.07)}
+.stap:last-child{border-bottom:none}
+.stap-nr{font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:rgba(0,212,255,0.18);line-height:1;flex-shrink:0;width:2.8rem;text-align:right;transition:color 0.3s}
+.stap:hover .stap-nr{color:var(--cyaan)}
+.stap h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;text-transform:uppercase;color:var(--wit);margin-bottom:0.4rem;letter-spacing:0.03em}
+.stap p{font-size:0.9rem;color:var(--tekst-dim)}
+.voordelen{display:flex;flex-direction:column;gap:1rem}
+.voordeel{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem 1.6rem;border-radius:6px;background:var(--donker-3);border:1px solid rgba(0,212,255,0.09);transition:border-color 0.25s}
+.voordeel:hover{border-color:rgba(0,212,255,0.32)}
+.check{width:22px;height:22px;border-radius:50%;flex-shrink:0;background:var(--cyaan-dim);border:1px solid var(--cyaan);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.check svg{width:10px;height:10px;stroke:var(--cyaan);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.voordeel strong{display:block;color:var(--wit);font-size:0.94rem;margin-bottom:0.2rem}
+.voordeel span{font-size:0.87rem;color:var(--tekst-dim)}
+
+/* OVER ONS */
+#over-ons{background:var(--donker-2)}
+.over-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+@media(max-width:820px){.over-layout{grid-template-columns:1fr}}
+.over-img{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--donker-3);border:1px solid rgba(0,212,255,0.1)}
+.over-img img{width:100%;height:100%;object-fit:cover;opacity:0.65;display:block}
+.over-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(6,13,20,0.9);backdrop-filter:blur(8px);border:1px solid rgba(0,212,255,0.25);border-radius:4px;padding:0.8rem 1.2rem}
+.over-badge strong{display:block;font-family:var(--font-display);font-size:1.9rem;font-weight:900;color:var(--cyaan);line-height:1}
+.over-badge span{font-size:0.73rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--tekst-dim)}
+.over-tekst p{color:var(--tekst-dim);font-weight:300;font-size:0.97rem;margin-bottom:1rem}
+.over-details{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.over-detail{padding:1.2rem;background:var(--donker-3);border-radius:6px;border:1px solid rgba(0,212,255,0.08)}
+.over-detail strong{display:block;font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--cyaan)}
+.over-detail span{font-size:0.78rem;color:var(--tekst-dim);text-transform:uppercase;letter-spacing:0.06em}
+
+/* REVIEWS */
+#reviews{background:var(--donker)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3.5rem}
+.review{background:var(--donker-3);border:1px solid rgba(0,212,255,0.07);border-radius:6px;padding:2rem;transition:border-color 0.25s}
+.review:hover{border-color:rgba(0,212,255,0.25)}
+.sterren{display:flex;gap:3px;margin-bottom:1rem;color:var(--cyaan);font-size:14px}
+.review p{font-size:0.92rem;color:var(--tekst-dim);line-height:1.7;margin-bottom:1.4rem;font-style:italic}
+.review-naam{font-weight:500;color:var(--wit);font-size:0.9rem}
+.review-loc{font-size:0.8rem;color:var(--tekst-dim)}
+
+/* CONTACT */
+#contact{background:var(--donker-2);position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;top:-40%;right:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.05) 0%,transparent 70%);pointer-events:none}
+.contact-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;margin-top:4rem;align-items:start}
+@media(max-width:820px){.contact-layout{grid-template-columns:1fr}}
+.contact-items{display:flex;flex-direction:column;gap:1.6rem}
+.ci{display:flex;gap:1.2rem;align-items:flex-start}
+.ci-icon{width:46px;height:46px;flex-shrink:0;border-radius:6px;background:var(--cyaan-dim);border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center}
+.ci-icon svg{width:20px;height:20px;stroke:var(--cyaan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ci strong{display:block;color:var(--wit);font-size:0.9rem;margin-bottom:0.2rem}
+.ci span{color:var(--tekst-dim);font-size:0.9rem}
+.contact-form{background:var(--donker-3);border:1px solid rgba(0,212,255,0.1);border-radius:8px;padding:2.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:560px){.form-row{grid-template-columns:1fr}}
+.fg{margin-bottom:1.2rem}
+.fg label{display:block;font-size:0.78rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--tekst-dim);margin-bottom:0.5rem}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--donker-2);border:1px solid rgba(0,212,255,0.14);border-radius:4px;padding:0.75rem 1rem;color:var(--wit);font-family:var(--font-body);font-size:0.93rem;outline:none;transition:border-color 0.2s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--cyaan)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--tekst-dim)}
+.fg textarea{resize:vertical;min-height:120px}
+.fg select option{background:var(--donker-2)}
+.btn-sub{width:100%;background:var(--cyaan);color:var(--donker);font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:0.08em;text-transform:uppercase;border:none;border-radius:4px;padding:0.95rem;cursor:pointer;transition:box-shadow 0.25s,transform 0.2s}
+.btn-sub:hover{transform:translateY(-2px);box-shadow:0 0 28px var(--cyaan-glow)}
+
+/* FOOTER */
+footer{background:var(--donker);border-top:1px solid rgba(0,212,255,0.07);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--wit)}
+.footer-logo span{color:var(--cyaan)}
+footer p{font-size:0.8rem;color:var(--tekst-dim)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:0.8rem;color:var(--tekst-dim);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--cyaan)}
+
+/* ANIMATIES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{animation:fadeUp 0.6s ease 0.1s both}
+.hero h1{animation:fadeUp 0.7s ease 0.2s both}
+.hero-sub{animation:fadeUp 0.7s ease 0.35s both}
+.hero-btns{animation:fadeUp 0.7s ease 0.45s both}
+.hero-stats{animation:fadeUp 0.7s ease 0.55s both}
+
+@media(max-width:700px){
+  nav{padding:1rem 1.5rem}
+  nav ul{display:none}
+  section{padding:4rem 1.5rem}
+  .hero{padding:7rem 1.5rem 3rem}
+  footer{padding:1.5rem;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><img src="sting-ray-logo-white-rgb.png" alt="Sting-Ray Zwembad Onderhoud"></a>
+  <ul>
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#werkwijze">Werkwijze</a></li>
+    <li><a href="#over-ons">Over ons</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="nav-contact-blok">Offerte aanvragen</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-radial"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Gecertificeerd zwembad specialist</div>
+    <h1>Professioneel<span class="acc">Zwembad</span>Onderhoud</h1>
+    <p class="hero-sub">Wij reinigen, inspecteren en repareren uw zwembad <strong>zonder leeg te pompen</strong> — door gecertificeerde duikers. Voor particulieren én professionals.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="hero-cta-blok">Offerte aanvragen</a>
+      <a href="#diensten" class="btn-o">Bekijk onze diensten</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-nr">120+</div><div class="stat-label">Tevreden klanten</div></div>
+      <div><div class="stat-nr">5 jr</div><div class="stat-label">Ervaring</div></div>
+      <div><div class="stat-nr">VCA+</div><div class="stat-label">Certificaat</div></div>
+      <div><div class="stat-nr">24/7</div><div class="stat-label">Bereikbaar</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section id="diensten">
+  <div class="container">
+    <div class="eyebrow">Onze diensten</div>
+    <h2 class="stitle">Alles voor<br><span class="acc">uw zwembad</span></h2>
+    <p class="ssub">Van een grondige seizoensreiniging tot wekelijks onderhoud – wij regelen het van A tot Z.</p>
+    <div class="diensten-grid">
+      <div class="dienst">
+        <div class="dienst-icon"><svg viewBox="0 0 24 24"><path d="M2 12c1.5-2 3-3 5-3s3.5 1 5 3 3.5 3 5 3"/><path d="M2 17c1.5-2 3-3 5-3s3.5 1 5 3 3.5 3 5 3"/><path d="M2 7c1.5-2 3-3 5-3s3.5 1 5 3 3.5 3 5 3"/></svg></div>
+        <h3>Zwembadreiniging</h3>
+        <p>Volledige reiniging van wanden, bodem, waterrand en skimmers. Inclusief stofzuigen en borstelwerk.</p>
+        <a href="#contact" class="dienst-link">Meer info <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="dienst">
+        <div class="dienst-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <h3>Onderhoudscontract</h3>
+        <p>Wekelijks of tweewekelijks onderhoud inclusief wateranalyse, pH-correctie, filterreiniging en digitale rapportage.</p>
+        <a href="#contact" class="dienst-link">Meer info <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="dienst">
+        <div class="dienst-icon"><svg viewBox="0 0 24 24"><path d="M12 2c0 0-6 5.5-6 10a6 6 0 0012 0c0-4.5-6-10-6-10z"/></svg></div>
+        <h3>Waterbehandeling</h3>
+        <p>Groen of troebel water? Professionele analyse en correctie van waterchemie. Uw bad terug in perfecte conditie.</p>
+        <a href="#contact" class="dienst-link">Meer info <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="dienst">
+        <div class="dienst-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <h3>Inspectie &amp; advies</h3>
+        <p>Technische inspectie van pomp, filter, verwarming en doseerunit. Inclusief schriftelijk rapport en advies.</p>
+        <a href="#contact" class="dienst-link">Meer info <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WERKWIJZE -->
+<section id="werkwijze">
+  <div class="container">
+    <div class="eyebrow">Hoe werkt het</div>
+    <h2 class="stitle">Onze <span class="acc">werkwijze</span></h2>
+    <div class="ww-layout">
+      <div class="stappen">
+        <div class="stap"><div class="stap-nr">01</div><div><h3>Contact opnemen</h3><p>Vul het formulier in of bel ons. We reageren binnen 24 uur met een vrijblijvende offerte op maat.</p></div></div>
+        <div class="stap"><div class="stap-nr">02</div><div><h3>Planning &amp; afspraak</h3><p>We plannen een moment dat u schikt. U hoeft er zelf niet aanwezig te zijn.</p></div></div>
+        <div class="stap"><div class="stap-nr">03</div><div><h3>Vakkundige uitvoering</h3><p>Ons team werkt netjes en grondig. We laten geen sporen achter en nemen alle materialen mee.</p></div></div>
+        <div class="stap"><div class="stap-nr">04</div><div><h3>Digitale rapportage</h3><p>Na elk bezoek ontvangt u een rapport met waterwaarden en uitgevoerde werkzaamheden.</p></div></div>
+      </div>
+      <div class="voordelen">
+        <div class="voordeel"><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Geen zorgen – wij regelen alles</strong><span>U hoeft niets voor te bereiden. Wij hebben alle materialen bij.</span></div></div>
+        <div class="voordeel"><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Gecertificeerde specialisten</strong><span>Al onze medewerkers zijn opgeleid en werken met gecertificeerde producten.</span></div></div>
+        <div class="voordeel"><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Vaste prijzen, geen verrassingen</strong><span>Heldere offertes. Wat we afspreken, factureren we. Geen verborgen kosten.</span></div></div>
+        <div class="voordeel"><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Milieuvriendelijke producten</strong><span>We werken met ecologisch verantwoorde reinigingsmiddelen waar mogelijk.</span></div></div>
+        <div class="voordeel"><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>Spoedreparaties binnen 48 u</strong><span>Technisch probleem? We proberen altijd snel ter plaatse te zijn.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVER ONS -->
+<section id="over-ons">
+  <div class="container">
+    <div class="over-layout">
+      <div class="over-img">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&auto=format&fit=crop" alt="Zwembad onderhoud" onerror="this.style.display='none'">
+        <div class="over-badge"><strong>120+</strong><span>Tevreden klanten</span></div>
+      </div>
+      <div>
+        <div class="eyebrow">Over ons</div>
+        <h2 class="stitle">Lokaal bedrijf,<br><span class="acc">grote expertise</span></h2>
+        <p>Sting-Ray Zwembad Onderhoud is opgericht in 2019. Wat begon als een eenmanszaak groeide uit tot een team van gecertificeerde duikers en zwembadspecialisten.</p>
+        <p>Ons unieke kenmerk: wij repareren en reinigen <strong style="color:var(--wit)">zonder het bad leeg te pompen</strong>. Dat bespaart tijd, water en kosten voor onze klanten.</p>
+        <div class="over-details">
+          <div class="over-detail"><strong>2016</strong><span>Opgericht</span></div>
+          <div class="over-detail"><strong>5</strong><span>Medewerkers</span></div>
+          <div class="over-detail"><strong>8 jaar</strong><span>Ervaring</span></div>
+          <div class="over-detail"><strong>★ 4.9</strong><span>Gemiddelde score</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="eyebrow">Wat klanten zeggen</div>
+    <h2 class="stitle">Reviews</h2>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="sterren">★★★★★</div>
+        <p>"Ons zwembad zag er na twee seizoenen hopeloos uit. Na één bezoek van AquaHelder was het alsof we een nieuw bad hadden. Fantastisch werk en vriendelijk team."</p>
+        <div class="review-naam">Thomas van den Berg</div>
+        <div class="review-loc">Antwerpen</div>
+      </div>
+      <div class="review">
+        <div class="sterren">★★★★★</div>
+        <p>"Al drie jaar klant voor ons onderhoudscontract. Altijd stipt, altijd netjes. De digitale rapporten zijn super handig. Ik raad AquaHelder aan iedereen aan."</p>
+        <div class="review-naam">Martine Janssen</div>
+        <div class="review-loc">Mortsel</div>
+      </div>
+      <div class="review">
+        <div class="sterren">★★★★★</div>
+        <p>"Groen water midden in de zomer. Ze waren de volgende dag al ter plaatse en twee dagen later kon ik terug zwemmen. Uitstekende service en eerlijke prijs."</p>
+        <div class="review-naam">Filip Boers</div>
+        <div class="review-loc">Schoten</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container" style="position:relative">
+    <div class="eyebrow">Neem contact op</div>
+    <h2 class="stitle">Gratis offerte<br><span class="acc">aanvragen</span></h2>
+    <p class="ssub">Vul het formulier in en wij reageren binnen 24 uur met een vrijblijvende offerte op maat van uw zwembad.</p>
+    <div class="contact-layout">
+      <div class="contact-items">
+        <div class="ci">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><strong>Telefoon</strong><span>+32 (0)3 123 45 67</span></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><strong>E-mail</strong><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f1f6fef7d8f9e9edf9f0fdf4fcfdeab6fafd">[email&#160;protected]</a></span></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><strong>Werkgebied</strong><span>Regio Antwerpen &amp; omstreken (40 km)</span></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><strong>Openingsuren</strong><span>Ma–Vr: 08:00–18:00 · Za: 09:00–13:00</span></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="fg"><label>Voornaam</label><input type="text" placeholder="Jan"></div>
+          <div class="fg"><label>Achternaam</label><input type="text" placeholder="Janssen"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>E-mail</label><input type="email" placeholder="jan@email.be"></div>
+          <div class="fg"><label>Telefoon</label><input type="tel" placeholder="+32 ..."></div>
+        </div>
+        <div class="fg">
+          <label>Gewenste dienst</label>
+          <select>
+            <option value="">Kies een dienst...</option>
+            <option>Eenmalige reiniging</option>
+            <option>Onderhoudscontract</option>
+            <option>Waterbehandeling</option>
+            <option>Inspectie &amp; advies</option>
+            <option>Andere / weet ik niet</option>
+          </select>
+        </div>
+        <div class="fg"><label>Uw bericht</label><textarea placeholder="Vertel ons over uw zwembad (grootte, type, probleem...)"></textarea></div>
+        <button class="btn-sub" type="button" id="submitBtn">Verstuur aanvraag →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="sting-ray-logo-white-rgb.png" alt="Sting-Ray" style="height:36px;width:auto;opacity:0.85">
+  <p>© 2025 Sting-Ray Zwembad Onderhoud</p>
+  <div class="footer-links">
+    <a href="#">Privacybeleid</a>
+    <a href="#">Algemene voorwaarden</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){en.target.style.opacity='1';en.target.style.transform='translateY(0)'}
+  });
+},{threshold:0.12});
+document.querySelectorAll('.dienst,.stap,.voordeel,.review,.over-detail,.ci').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(18px)';
+  el.style.transition='opacity 0.5s ease,transform 0.5s ease';
+  obs.observe(el);
+});
+document.getElementById('submitBtn').addEventListener('click',function(){
+  th
